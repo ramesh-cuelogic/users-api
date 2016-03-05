@@ -33,4 +33,32 @@ composer install
 ```
 > Note: You need to have composer installe don your system firs. For more info please refer https://getcomposer.org/
 
- 
+ CONFIGURATION
+-------------
+
+Following are the steps for configuration
+* Create ```.env``` file in the root directory
+* Add the following configurations to the created ```.env``` file:
+```sh
+APP_ENV=local
+APP_DEBUG=true
+APP_KEY=SomeRandomKey!!!
+
+DB_CONNECTION=mysql
+DB_HOST=YOUR_HOST
+DB_PORT=3306
+DB_DATABASE=DB_NAME
+DB_USERNAME=USER
+DB_PASSWORD=PASSWORD
+
+CACHE_DRIVER=YOUR_CACHE_DRIVER
+QUEUE_DRIVER=sync
+```
+
+MAINTAINERS
+-----------
+
+Current maintainers:
+ * Ramesh M - https://github.com/ramesh-cuelogic
+ * Irfan R - https://github.com/irfnr
+ * Ashwini G - https://github.com/ashwinimg-cuelogic
