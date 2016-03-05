@@ -9,7 +9,7 @@
  INTRODUCTION
 ------------
 
-This project contains a sample REST API to get users from MySql BD
+This project contains a sample REST API to get users using microservice architecture. This is uses PSR-4 autoloader.
 
  * For demo of the project, visit the link:
    http://52.89.235.194
