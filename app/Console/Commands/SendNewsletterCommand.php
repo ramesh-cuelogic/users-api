@@ -13,7 +13,17 @@ class SendNewsletterCommand extends Command {
     public function fire()
     {
     	$credentials = new \Aws\Credentials\Credentials('AKIAJSXEEFIGFPISAHUA', 'ZgFUPFfZFdSzlQxH546Pv2bEO4u6RlrHQD01+t+P');
+		/*
+    	$awsLambdaClient = \Aws\Lambda\LambdaClient::factory([
+    				'credentials' => $credentials,
+    				'region' => 'us-west-2',
+    				'version' => 'latest'
+    			]);
 
+    	$result = $awsLambdaClient->invoke(array(
+		    'FunctionName' => 'MicroserviceEmailComposer'
+		));
+		print_r($result);*/
         $awsSdk = new \Aws\Sdk([
             'region' => 'us-west-2',
             'version' => 'latest',
@@ -28,17 +38,15 @@ class SendNewsletterCommand extends Command {
 		$itemArray = array(
             'Timestamp' => array(
                 'N' => (string) time()
-            )
-            /*,
+            ),
             'UserId' => array(
                 'N' => (string) 5
-            )*/
+            )
         );
 
         $response = $dynamoDbClient->putItem(array(
             'TableName' => 'EmailQueue',
             'Item' => $itemArray
         ));
-        //print_r($response);
     }
 }
