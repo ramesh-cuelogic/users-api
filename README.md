@@ -29,7 +29,7 @@ INSTALLATION
 To setup this project, run the command below in your repository:
 
 ```sh
-composer install
+composer create-project --prefer-dist laravel/lumen users-api
 ```
 > Note: You need to have composer installe don your system firs. For more info please refer https://getcomposer.org/
 
