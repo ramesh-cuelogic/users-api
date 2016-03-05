@@ -12,6 +12,33 @@ class SendNewsletterCommand extends Command {
 
     public function fire()
     {
-    	echo 'Starts sending newsletter';
+    	$credentials = new \Aws\Credentials\Credentials('AKIAJSXEEFIGFPISAHUA', 'ZgFUPFfZFdSzlQxH546Pv2bEO4u6RlrHQD01+t+P');
+
+        $awsSdk = new \Aws\Sdk([
+            'region' => 'us-west-2',
+            'version' => 'latest',
+            'credentials' => $credentials,
+            'DynamoDb' => [
+                'region' => 'us-west-2'
+            ]
+        ]);
+
+        $dynamoDbClient = $awsSdk->createDynamoDb();
+
+		$itemArray = array(
+            'Timestamp' => array(
+                'N' => (string) time()
+            )
+            /*,
+            'UserId' => array(
+                'N' => (string) 5
+            )*/
+        );
+
+        $response = $dynamoDbClient->putItem(array(
+            'TableName' => 'EmailQueue',
+            'Item' => $itemArray
+        ));
+        //print_r($response);
     }
 }
